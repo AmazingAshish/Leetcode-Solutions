@@ -1,0 +1,21 @@
+// Last updated: 7/19/2026, 10:19:37 PM
+#pragma GCC optimize("O3", "unroll-loops")
+class Solution {
+public:
+    int minFallingPathSum(vector<vector<int>>& grid) {
+        int n=grid.size();
+        
+        for(int i=1; i<n; i++){
+            auto row=grid[i-1];
+            nth_element(row.begin(), row.begin()+1, row.end());
+            for(int j=0; j<n; j++){
+                if (grid[i-1][j]==row[0])
+                    grid[i][j]+=row[1];
+                else
+                    grid[i][j]+=row[0];
+            }
+        }
+        
+        return *min_element(grid[n-1].begin(), grid[n-1].end());
+    }
+};
