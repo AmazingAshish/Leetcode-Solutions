@@ -1,0 +1,7 @@
+-- Last updated: 7/19/2026, 10:23:54 PM
+# Write your MySQL query statement below
+SELECT e1.name AS Employee
+FROM Employee AS e1
+JOIN Employee e2
+    ON e1.managerID=e2.id
+    WHERE e1.salary>e2.salary
